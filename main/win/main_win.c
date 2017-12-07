@@ -31,6 +31,7 @@
 #include "../rom.h"
 #include "../../r4300/r4300.h"
 #include "../../memory/memory.h"
+#include "../../playback_render/render_controller.h"
 #include "translation.h"
 #include "rombrowser.h"
 #include "main_win.h"
@@ -3139,6 +3140,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	    mkdir(tempStr);
 	    sprintf(tempStr, "%splugin", AppPath);
 	    mkdir(tempStr);
+        sprintf(tempStr, "%sRenderJobs", AppPath);
+	    mkdir(tempStr);
+        sprintf(tempStr, "%sRenderOut", AppPath);
+	    mkdir(tempStr);
 	}
            
     emu_launched = 0;
@@ -3253,11 +3258,12 @@ else {
     if (!StartGameByCommandLine()) {
            cmdlineMode = 0;
     }
+    
+    render_controller_init();
 
     ShowInfo("Mupen64 - Nintendo 64 emulator - re-recording v8 - GUI mode");
     SetStatusTranslatedString( hStatus, 0, "Mupen64 - Nintendo 64 emulator - re-recording v8" );
         
-    
 	while(GetMessage(&Msg, NULL, 0, 0) > 0)
 	{
 	   	if (!TranslateAccelerator(mainHWND,Accel,&Msg)) {
@@ -3299,6 +3305,7 @@ else {
 	}	
 }
         
+    render_controller_destroy();
 	fclose(newfp);
 	CloseLogWindow();
 	CloseKaillera();

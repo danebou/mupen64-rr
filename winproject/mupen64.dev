@@ -1,7 +1,7 @@
 [Project]
 FileName=mupen64.dev
 Name=Mupen 64 Windows
-UnitCount=123
+UnitCount=125
 Type=0
 Ver=1
 ObjFiles=
@@ -1274,6 +1274,26 @@ BuildCmd=
 FileName=..\main\vcr_compress.h
 CompileCpp=0
 Folder=interupt.c/interupt.c
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit124]
+FileName=..\playback_render\render_controller.c
+CompileCpp=0
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit125]
+FileName=..\playback_render\render_controller.h
+CompileCpp=0
+Folder=Mupen 64 Windows
 Compile=1
 Link=1
 Priority=1000
